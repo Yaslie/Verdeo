@@ -434,6 +434,8 @@ svg {
   background: linear-gradient(160deg, #2C3E50 0%, #3D566E 50%, #1A252F 100%);
   box-shadow: var(--shadow-lg);
   position: relative;
+  object-fit: cover;
+  display: block;
 }
 
 /* Illustrated shelf scene */
