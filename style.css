@@ -627,15 +627,15 @@ svg {
 
 /* Each card gets a unique gradient */
 .product-card__img--quim {
-  background: linear-gradient(145deg, #1a3a4a 0%, #2e6b6b 35%, #5a9e6f 65%, #d4aa55 100%);
+  background: url('quimicos.png') center/cover no-repeat;
 }
 
 .product-card__img--equip {
-  background: linear-gradient(145deg, #3d2d1a 0%, #7a5030 35%, #c88050 65%, #6a4580 100%);
+  background: url('equipos.png') center/cover no-repeat;
 }
 
 .product-card__img--trap {
-  background: linear-gradient(145deg, #1a2d3a 0%, #335570 35%, #6a8a6a 65%, #c8b050 100%);
+  background: url('trampas.png') center/cover no-repeat;
 }
 
 /* Subtle animated sheen on cards */
