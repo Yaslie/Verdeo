@@ -1544,3 +1544,47 @@ svg {
   color: white;
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
 }
+
+.catalog-cta {
+  margin-top: 36px;
+  padding: 24px 32px;
+  background: rgba(46, 204, 113, 0.08);
+  border-radius: 16px;
+  border: 1px solid rgba(46, 204, 113, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.catalog-cta__text {
+  color: var(--green-dark);
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.catalog-cta__btn {
+  background: #25D366;
+  color: white;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.catalog-cta__btn:hover {
+  background: #128C7E;
+  color: white;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .catalog-cta {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
