@@ -647,15 +647,15 @@ svg {
 
 /* Each card gets a unique gradient */
 .product-card__img--quim {
-  background: url('quimicos.png') center/cover no-repeat;
+  background: url('img/quimicos.png') center/cover no-repeat;
 }
 
 .product-card__img--equip {
-  background: url('equipos.png') center/cover no-repeat;
+  background: url('img/equipos.png') center/cover no-repeat;
 }
 
 .product-card__img--trap {
-  background: url('trampas.png') center/cover no-repeat;
+  background: url('img/trampas.png') center/cover no-repeat;
 }
 
 /* Subtle animated sheen on cards */
