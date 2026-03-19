@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
             box.className = "catalog-category-box";
 
             const itemsHtml = cat.products.map(p => `
-        <div class="product-item" onclick="openProductModal('${p.name.replace(/'/g, "\\'")}', '${p.desc.replace(/'/g, "\\'")}', '${cat.category}')">
+        <div class="product-item" onclick="openProductModal('${p.name.replace(/'/g, "\\'")}', '${p.desc.replace(/'/g, "\\'")}', '${cat.category}', '${JSON.stringify(p.tags || []).replace(/'/g, "&#39;").replace(/"/g, "&quot;")}')">
           <span class="product-item-name">${p.name}</span>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green-primary)"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </div>
@@ -29,13 +29,30 @@ const productModal = document.getElementById("product-modal");
 const pTitle = document.getElementById("modal-title");
 const pDesc = document.getElementById("modal-desc");
 const pTag = document.getElementById("modal-category");
+const pTagsContainer = document.getElementById("modal-tags");
 const pBtn = document.getElementById("modal-whatsapp");
 
-function openProductModal(name, desc, category) {
+function openProductModal(name, desc, category, tagsJson) {
     if (!productModal) return;
     pTitle.textContent = name;
     pDesc.textContent = desc;
     pTag.textContent = category;
+
+    if (pTagsContainer) {
+        pTagsContainer.innerHTML = '';
+        const tags = JSON.parse(tagsJson || "[]");
+        if (tags.length > 0) {
+            tags.forEach(tag => {
+                const span = document.createElement("span");
+                span.className = "modal__pest-tag";
+                span.textContent = tag;
+                pTagsContainer.appendChild(span);
+            });
+            pTagsContainer.style.display = "flex";
+        } else {
+            pTagsContainer.style.display = "none";
+        }
+    }
 
     const waMsg = `¡Hola! Me interesa conocer la disponibilidad y más información sobre ${name}.`;
     pBtn.href = `https://wa.me/522216670302?text=${encodeURIComponent(waMsg)}`;
