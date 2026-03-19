@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo Completo – Verdeo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar" id="navbar">
+        <div class="container navbar__inner">
+            <a href="index.html" class="navbar__logo" aria-label="Verdeo inicio">
+                <img src="logo.png" alt="Verdeo Logo" class="logo-image">
+            </a>
+            <nav class="navbar__nav" id="main-nav" role="navigation" aria-label="Menú principal">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="catalogo.html" class="nav-link active">Catálogo</a></li>
+                    <li><a href="historia.html" class="nav-link">Lo que hacemos</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false"
+                aria-controls="main-nav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main style="padding-top: 180px; min-height: 80vh;">
+        <section class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Nuestra Colección</span>
+                <h2 class="section-title">Catálogo Completo de Verdeo</h2>
+                <p class="section-desc">Explora la lista total de productos y sus detalles. (Esta sección será
+                    personalizada próximamente).</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="https://www.mercadolibre.com.mx/tienda/verdeo" target="_blank" rel="noopener noreferrer"
+                    class="btn btn--primary"
+                    style="background:#FFE600; color:#2D3277; box-shadow: 0 4px 16px rgba(255, 230, 0, 0.4);">
+                    Visitar Tienda en Mercado Libre
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__bottom" style="border-top: none;">
+            <div class="container footer__bottom-inner" style="justify-content: center;">
+                <p class="footer__copy">© 2023 Verdeo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
