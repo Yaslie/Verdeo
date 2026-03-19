@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const box = document.createElement("div");
                 box.className = "catalog-category-box";
+                if (lowerFilter) box.classList.add("expanded");
 
                 const itemsHtml = filteredProducts.map(p => `
           <div class="product-item" onclick="openProductModal('${p.name.replace(/'/g, "\\'")}', '${p.desc.replace(/'/g, "\\'")}', '${cat.category}', '${JSON.stringify(p.tags || []).replace(/'/g, "&#39;").replace(/"/g, "&quot;")}')">
@@ -34,10 +35,19 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join("");
 
                 box.innerHTML = `
-          <h3>${cat.icon} ${cat.category}</h3>
-          <p class="catalog-category-desc">${cat.description}</p>
-          <div class="product-list">
-            ${itemsHtml}
+          <div class="catalog-category-header" onclick="this.parentElement.classList.toggle('expanded')" title="Desplegar para ver productos">
+            <div class="catalog-category-header-text">
+              <h3>${cat.icon} ${cat.category}</h3>
+              <p class="catalog-category-desc">${cat.description}</p>
+            </div>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="product-list-wrapper">
+            <div class="product-list-inner">
+              <div class="product-list">
+                ${itemsHtml}
+              </div>
+            </div>
           </div>
         `;
                 container.appendChild(box);
