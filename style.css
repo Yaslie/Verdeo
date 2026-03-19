@@ -1607,3 +1607,43 @@ svg {
   border: 1px solid var(--border);
   text-transform: capitalize;
 }
+
+/* Search Bar */
+.catalog-search-wrapper {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+}
+
+.catalog-search-wrapper .search-icon {
+  position: absolute;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  color: var(--text-secondary);
+}
+
+.catalog-search-input {
+  width: 100%;
+  padding: 18px 20px 18px 56px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-white);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: all var(--duration) var(--ease);
+}
+
+.catalog-search-input::placeholder {
+  color: #adb5bd;
+}
+
+.catalog-search-input:focus {
+  outline: none;
+  border-color: var(--green-primary);
+  box-shadow: 0 4px 20px rgba(46, 204, 113, 0.15);
+}

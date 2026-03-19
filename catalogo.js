@@ -1,27 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("catalog-container");
+    const searchInput = document.getElementById("catalog-search");
 
     if (container && typeof pestCatalog !== "undefined") {
-        pestCatalog.forEach(cat => {
-            const box = document.createElement("div");
-            box.className = "catalog-category-box";
 
-            const itemsHtml = cat.products.map(p => `
-        <div class="product-item" onclick="openProductModal('${p.name.replace(/'/g, "\\'")}', '${p.desc.replace(/'/g, "\\'")}', '${cat.category}', '${JSON.stringify(p.tags || []).replace(/'/g, "&#39;").replace(/"/g, "&quot;")}')">
-          <span class="product-item-name">${p.name}</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green-primary)"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </div>
-      `).join("");
+        function renderCatalog(filterText = "") {
+            container.innerHTML = "";
+            const lowerFilter = filterText.toLowerCase().trim();
+            let hasAnyResults = false;
 
-            box.innerHTML = `
-        <h3>${cat.icon} ${cat.category}</h3>
-        <p class="catalog-category-desc">${cat.description}</p>
-        <div class="product-list">
-          ${itemsHtml}
-        </div>
-      `;
-            container.appendChild(box);
-        });
+            pestCatalog.forEach(cat => {
+                let filteredProducts = cat.products;
+
+                if (lowerFilter) {
+                    filteredProducts = cat.products.filter(p => {
+                        const matchName = p.name.toLowerCase().includes(lowerFilter);
+                        const matchTags = p.tags && p.tags.some(tag => tag.toLowerCase().includes(lowerFilter));
+                        return matchName || matchTags;
+                    });
+                }
+
+                if (filteredProducts.length === 0) return;
+                hasAnyResults = true;
+
+                const box = document.createElement("div");
+                box.className = "catalog-category-box";
+
+                const itemsHtml = filteredProducts.map(p => `
+          <div class="product-item" onclick="openProductModal('${p.name.replace(/'/g, "\\'")}', '${p.desc.replace(/'/g, "\\'")}', '${cat.category}', '${JSON.stringify(p.tags || []).replace(/'/g, "&#39;").replace(/"/g, "&quot;")}')">
+            <span class="product-item-name">${p.name}</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green-primary)"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+        `).join("");
+
+                box.innerHTML = `
+          <h3>${cat.icon} ${cat.category}</h3>
+          <p class="catalog-category-desc">${cat.description}</p>
+          <div class="product-list">
+            ${itemsHtml}
+          </div>
+        `;
+                container.appendChild(box);
+            });
+
+            if (!hasAnyResults) {
+                container.innerHTML = `
+          <div style="text-align: center; padding: 60px 20px; width: 100%;">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--border); margin-bottom:16px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <h3 style="color: var(--text-primary); margin-bottom: 8px;">No se encontraron resultados</h3>
+            <p style="color: var(--text-secondary);">No hay productos ni plagas que coincidan con "<b>${filterText}</b>".</p>
+          </div>
+        `;
+            }
+        }
+
+        // Initial render
+        renderCatalog();
+
+        // Event listener for search
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                renderCatalog(e.target.value);
+            });
+        }
     }
 });
 
