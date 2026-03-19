@@ -5,6 +5,11 @@
 
 'use strict';
 
+// ── Vercel Web Analytics ──────────────────────
+(function initAnalytics() {
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+})();
+
 // ── 1. Navbar: scroll state & active link ──────
 (function initNavbar() {
   const navbar = document.getElementById('navbar');
