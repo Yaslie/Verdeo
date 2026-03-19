@@ -378,35 +378,21 @@ svg {
   gap: 14px;
 }
 
-.trust-avatars {
-  display: flex;
-}
-
-.avatar {
-  width: 38px;
-  height: 38px;
+.trust-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--green-tag-bg);
+  color: var(--green-dark);
   border-radius: 50%;
-  border: 2.5px solid var(--bg-white);
-  background: var(--green-primary);
-  margin-left: -10px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
-.avatar:first-child {
-  margin-left: 0;
-}
-
-.avatar--1 {
-  background: linear-gradient(135deg, #5DADE2, #2980B9);
-}
-
-.avatar--2 {
-  background: linear-gradient(135deg, #F39C12, #E67E22);
-}
-
-.avatar--3 {
-  background: linear-gradient(135deg, #27AE60, #1E8449);
+.trust-icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 .trust-text {
@@ -591,6 +577,35 @@ svg {
 .catalog {
   padding: var(--section-py) 0;
   background: var(--bg-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.catalog::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.catalog::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(39, 174, 96, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.catalog .container {
+  position: relative;
+  z-index: 1;
 }
 
 .catalog__grid {
@@ -604,12 +619,17 @@ svg {
   border-radius: 20px;
   overflow: hidden;
   background: var(--bg-white);
-  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  border: 1.5px solid rgba(46, 204, 113, 0.15);
+  box-shadow: 0 4px 24px rgba(46, 204, 113, 0.03);
+  transition: transform var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
 }
 
 .product-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 16px 40px rgba(46, 204, 113, 0.15);
+  border-color: rgba(39, 174, 96, 0.4);
 }
 
 .product-card--tall .product-card__img {
@@ -658,7 +678,7 @@ svg {
 }
 
 .product-card__body {
-  padding: 20px 4px 8px;
+  padding: 24px 20px 28px;
 }
 
 .product-card__tag {
