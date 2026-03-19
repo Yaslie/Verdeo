@@ -327,7 +327,7 @@ svg {
 /* ── 6. Hero ─────────────────────────────────── */
 .hero {
   background: var(--bg-light);
-  padding-top: calc(72px + clamp(48px, 7vw, 96px));
+  padding-top: calc(72px + clamp(24px, 3vw, 40px));
   padding-bottom: var(--section-py);
 }
 
