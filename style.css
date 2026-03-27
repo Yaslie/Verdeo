@@ -1687,3 +1687,38 @@ svg {
   border-color: var(--green-primary);
   box-shadow: 0 4px 20px rgba(46, 204, 113, 0.15);
 }
+
+/* ── WhatsApp Floating Button ─────────────────── */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: wa-bounce 2.5s ease-in-out infinite;
+}
+
+.whatsapp-fab svg {
+  width: 30px;
+  height: 30px;
+}
+
+.whatsapp-fab:hover {
+  transform: scale(1.12);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.65);
+  animation: none;
+}
+
+@keyframes wa-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
