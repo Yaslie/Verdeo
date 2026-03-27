@@ -14,14 +14,14 @@
 
 :root {
   /* Colors */
-  --green-primary: #2ECC71;
-  --green-dark: #27AE60;
-  --green-deep: #0D2B1E;
-  --green-deep2: #0A2218;
-  --green-mid: #145A32;
-  --green-badge: #1E8449;
-  --green-tag-bg: rgba(46, 204, 113, 0.15);
-  --green-tag-text: #27AE60;
+  --green-primary: #239f6b;
+  --green-dark: #1a8257;
+  --green-deep: #0b2419;
+  --green-deep2: #091d15;
+  --green-mid: #12482c;
+  --green-badge: #196b47;
+  --green-tag-bg: rgba(35, 159, 107, 0.15);
+  --green-tag-text: #1a8257;
 
   --bg-light: #F3FAF5;
   --bg-white: #FFFFFF;
