@@ -205,71 +205,80 @@
   line-height: 1.6;
 }
 
-/* --- Speakers --- */
-.fv-speakers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 32px;
+/* --- Speakers List --- */
+.fv-speakers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.speaker-card {
+.speaker-item {
   background: var(--bg-white);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  border-radius: 16px;
+  padding: 24px 32px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  align-items: center;
+  gap: 32px;
   border: 1px solid var(--border);
   transition: all var(--duration) var(--ease);
 }
 
-.speaker-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
+@media (max-width: 768px) {
+  .speaker-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px;
+  }
+}
+
+.speaker-item:hover {
   border-color: var(--green-primary);
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
 }
 
-.speaker-image {
-  aspect-ratio: 1;
-  width: 100%;
-  background: var(--bg-light);
+.speaker-lead {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.speaker-image svg {
-  width: 80px;
-  height: 80px;
-  color: var(--green-primary);
-  opacity: 0.2;
-}
-
-.speaker-info {
-  padding: 24px;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .speaker-name {
   font-size: 1.125rem;
   font-weight: 800;
-  margin-bottom: 4px;
   color: var(--text-primary);
 }
 
 .speaker-org {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--green-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 12px;
+}
+
+.speaker-body {
+  border-left: 2px solid var(--green-tag-bg);
+  padding-left: 32px;
+}
+
+@media (max-width: 768px) {
+  .speaker-body {
+    border-left: none;
+    padding-left: 0;
+    border-top: 2px solid var(--green-tag-bg);
+    padding-top: 12px;
+  }
 }
 
 .speaker-topic {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.5;
-  font-style: italic;
+  font-weight: 500;
 }
 
 /* --- Hackathon Section --- */
