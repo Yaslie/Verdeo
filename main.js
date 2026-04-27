@@ -187,3 +187,27 @@
 
   observer.observe(iframe);
 })();
+
+
+// ── 7. Promo Pop-up: Show & Close ────────────────
+(function initPromoPopup() {
+  const popup = document.getElementById('promo-popup');
+  const closeBtn = document.getElementById('close-popup');
+  if (!popup || !closeBtn) return;
+
+  // Check if it's already been closed this session
+  if (sessionStorage.getItem('promo_closed')) return;
+
+  // Show after 0.5s delay
+  setTimeout(() => {
+    popup.classList.add('active');
+    popup.setAttribute('aria-hidden', 'false');
+  }, 500);
+
+  closeBtn.addEventListener('click', () => {
+    popup.classList.remove('active');
+    popup.setAttribute('aria-hidden', 'true');
+    // Don't show again in this session
+    sessionStorage.setItem('promo_closed', 'true');
+  });
+})();
